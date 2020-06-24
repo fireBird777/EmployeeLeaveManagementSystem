@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<form:form action="loginPage"  method="get"  modelAttribute="employee">
+	<form:form action="processLoginForm"  method="GET"  modelAttribute="employee">
 	
 		<label>Username:</label>
 		<form:input path="username"/><br><br>
