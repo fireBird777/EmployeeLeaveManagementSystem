@@ -4,12 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Action Page</title>
+<title>supervisor page</title>
 </head>
 <body>
-	${roles}
-	<br>
-	
-	${message}
+supervisor
 </body>
 </html>

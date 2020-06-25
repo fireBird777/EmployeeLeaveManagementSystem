@@ -23,12 +23,6 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int empolyeeId;
 	
-	@Column(name = "supervisor_id")
-	private int supervisorId;
-	
-	@Column(name = "hr_id")
-	private int hrId;
-	
 	@Column(name = "username")
 	private String username;
 	
@@ -66,22 +60,6 @@ public class Employee {
 
 	public void setEmpolyeeId(int empolyeeId) {
 		this.empolyeeId = empolyeeId;
-	}
-
-	public int getSupervisorId() {
-		return supervisorId;
-	}
-
-	public void setSupervisorId(int supervisorId) {
-		this.supervisorId = supervisorId;
-	}
-
-	public int getHrId() {
-		return hrId;
-	}
-
-	public void setHrId(int hrId) {
-		this.hrId = hrId;
 	}
 
 	public String getFirstName() {
@@ -167,12 +145,13 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [empolyeeId=" + empolyeeId + ", supervisorId=" + supervisorId + ", hrId=" + hrId
-				+ ", username=" + username + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName="
-				+ lastName + ", email=" + email + ", password=" + password + ", country=" + country + ", state=" + state
-				+ ", timestampOfJoining=" + timestampOfJoining + ", roles=" + roles + "]";
+		return "Employee [empolyeeId=" + empolyeeId + ", username=" + username + ", firstName=" + firstName
+				+ ", middleName=" + middleName + ", lastName=" + lastName + ", email=" + email + ", password="
+				+ password + ", country=" + country + ", state=" + state + ", timestampOfJoining=" + timestampOfJoining
+				+ "]";
 	}
 
+	
 	
 	
 	

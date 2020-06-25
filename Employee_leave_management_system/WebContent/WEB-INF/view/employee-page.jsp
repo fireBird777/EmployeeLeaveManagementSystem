@@ -4,12 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Action Page</title>
+<title>Employee page</title>
 </head>
 <body>
-	${roles}
-	<br>
-	
-	${message}
+<a href="${pageContext.request.contextPath}/employee/applyPage">Appply for Leave</a>
 </body>
 </html>
