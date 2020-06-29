@@ -1,5 +1,6 @@
 package com.employee_leave_mgmt.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -54,6 +56,9 @@ public class Employee {
 	@JoinTable(name = "employee_role",joinColumns = @JoinColumn(name = "emp_id"),inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> roles;
 
+	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL)
+	private List<Leave> leaves;
+	
 	public int getEmpolyeeId() {
 		return empolyeeId;
 	}
@@ -141,6 +146,25 @@ public class Employee {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+	
+	
+	public List<Leave> getLeaves() {
+		return leaves;
+	}
+
+	public void setLeaves(List<Leave> leaves) {
+		this.leaves = leaves;
+	}
+	
+	public void addLeave(Leave leave)
+	{
+		if(leaves == null)
+		{
+			leaves = new ArrayList<Leave>();
+		}	
+		leaves.add(leave);
+		leave.setEmployee(this);
 	}
 
 	@Override
