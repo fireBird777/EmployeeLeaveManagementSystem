@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.employee_leave_mgmt.entity.Leave;
+import com.employee_leave_mgmt.entity.LeaveType;
 import com.employee_leave_mgmt.service.LeaveService;
 
 @RequestMapping("/employee")
@@ -22,15 +23,20 @@ public class LeaveController {
 	@GetMapping("/applyPage")
 	public String applyLeave(Model theModel)
 	{
-		List<String> LeaveTypeNames = leaveService.getLeaveTypeName();
-		theModel.addAttribute("LeaveTypeNames",LeaveTypeNames);
+		//List<String> LeaveTypeNames = leaveService.getLeaveTypeName();
+		//theModel.addAttribute("LeaveTypeNames",LeaveTypeNames);
+		
+		
+		List<LeaveType> leaveTypes = leaveService.getLeaveTypes();
+		theModel.addAttribute("leaveTypes",leaveTypes);
+		
 		Leave leave = new Leave();
-		theModel.addAttribute(leave);
+		theModel.addAttribute("Leave",leave);
 		return "apply-leave-page";
 	}
 	
-	@GetMapping("/saveLeaveInfo")
-	public void saveLeaveInfo(@ModelAttribute("applyLeaveInfo")Leave theLeave)
+	@PostMapping("/saveLeaveInfo")
+	public void saveLeaveInfo(@ModelAttribute("leave")Leave theLeave)
 	{
 		
 		leaveService.saveLeave(theLeave);

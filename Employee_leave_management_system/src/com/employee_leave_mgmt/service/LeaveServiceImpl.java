@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.employee_leave_mgmt.dao.LeaveDao;
 import com.employee_leave_mgmt.entity.Leave;
+import com.employee_leave_mgmt.entity.LeaveType;
 
 @Service
 public class LeaveServiceImpl implements LeaveService {
@@ -17,9 +18,9 @@ public class LeaveServiceImpl implements LeaveService {
 	
 	@Transactional
 	@Override
-	public List<String> getLeaveTypeName() {
+	public List<LeaveType> getLeaveTypes() {
 
-		return leaveDao.getLeaveTypeName();
+		return leaveDao.getLeaveTypes();
 	}
 	
 	

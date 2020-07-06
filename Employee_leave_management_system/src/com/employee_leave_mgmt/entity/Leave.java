@@ -23,24 +23,25 @@ public class Leave {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "leave_id")
 	private int leaveId;
-	
+
 	@Column(name = "reason")
 	private String reason;
-	
+
 	@Column(name = "start_date")
 	private String startDate;
-	
+
 	@Column(name = "end_date")
 	private String endDate;
-	
+
 	@Column(name = "application_time_stamp")
 	private String applicationTimestamp;
-	
-	@OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH} )
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+			CascadeType.REFRESH })
 	@JoinColumn(name = "leave_type_id")
 	private LeaveType leaveType;
-	
-	@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+
+	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	@JoinColumn(name = "emp_id")
 	private Employee employee;
 
@@ -83,7 +84,7 @@ public class Leave {
 	public void setApplicationTimestamp(String applicationTimestamp) {
 		this.applicationTimestamp = applicationTimestamp;
 	}
-	
+
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -92,12 +93,18 @@ public class Leave {
 		this.employee = employee;
 	}
 
+	public LeaveType getLeaveType() {
+		return leaveType;
+	}
+
+	public void setLeaveType(LeaveType leaveType) {
+		this.leaveType = leaveType;
+	}
+
 	@Override
 	public String toString() {
-		return "Leave [leaveId=" + leaveId +", reason=" + reason
-				+ ", startDate=" + startDate + ", endDate=" + endDate + ", applicationTimestamp=" + applicationTimestamp
-				+ "]";
+		return "Leave [leaveId=" + leaveId + ", reason=" + reason + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", applicationTimestamp=" + applicationTimestamp + "]";
 	}
-	
-	
+
 }
