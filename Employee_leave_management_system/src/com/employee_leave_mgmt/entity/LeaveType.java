@@ -1,5 +1,9 @@
 package com.employee_leave_mgmt.entity;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,7 +33,9 @@ public class LeaveType {
 	@Column(name = "yearofeffect")
 	private String yearOfEffect;
 	
-
+	@OneToOne(mappedBy = "leaveType",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	private RemainingLeaveDays remainingLeaveDays;
+	
 	public int getLeaveTypeId() {
 		return leaveTypeId;
 	}
@@ -60,6 +67,8 @@ public class LeaveType {
 	public void setYearOfEffect(String yearOfEffect) {
 		this.yearOfEffect = yearOfEffect;
 	}
+	
+	
 
 	@Override
 	public String toString() {

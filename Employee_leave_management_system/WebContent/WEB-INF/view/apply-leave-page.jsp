@@ -35,14 +35,13 @@
 		localTime = time.toString();
 		out.print(localTime);
 		%>
+		<form:input path="applicationTimestamp" type = "hidden" value = "<%=localTime %>"/>
+		<form:input path="employee.empolyeeId" type = "hidden" value ="${employeeId}"/>
+		
 
-
-		<c:set var="localTime" scope="session"
-			value="${leave.applicationTimestamp}" />
-
-		<form:select path="leaveType">
-			<c:forEach items="${leaveTypes}" var="tempLeaveTypes">
-				<form:option value="${tempLeaveTypes}">${tempLeaveTypes.name}</form:option>
+		<form:select path="leaveType.leaveTypeId">
+			<c:forEach items="${leaveTypes}" var="LeaveType">
+				<form:option value="${LeaveType.leaveTypeId}">${LeaveType.name}</form:option>
 			</c:forEach>
 		</form:select>
 

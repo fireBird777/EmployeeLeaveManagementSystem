@@ -1,6 +1,12 @@
 package com.employee_leave_mgmt.entity;
 
-import java.util.List;
+
+
+
+
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,9 +17,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import net.bytebuddy.implementation.attribute.TypeAttributeAppender.ForInstrumentedType.Differentiating;
 
 @Entity
 @Table(name = "leave")
@@ -106,5 +113,8 @@ public class Leave {
 		return "Leave [leaveId=" + leaveId + ", reason=" + reason + ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", applicationTimestamp=" + applicationTimestamp + "]";
 	}
+	
+	
+	
 
 }

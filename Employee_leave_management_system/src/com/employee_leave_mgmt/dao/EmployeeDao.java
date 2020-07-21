@@ -10,4 +10,5 @@ public interface EmployeeDao {
 	public Employee getEmployee(Employee employee);
 	public boolean isUser(Employee employee);
 	public List<Role> getRoles();
+	public int getEmployeeId();
 }

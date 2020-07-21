@@ -7,6 +7,6 @@ import com.employee_leave_mgmt.entity.LeaveType;
 
 public interface LeaveDao {
 
-	public List<LeaveType> getLeaveTypes();
-	public void saveLeave(Leave theLeave);
+		public void saveLeave(Leave theLeave);
+		
 }

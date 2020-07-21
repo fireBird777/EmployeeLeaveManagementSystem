@@ -58,11 +58,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		employee = theEmployee;
 	}
 	
+	@Override
 	public List<Role> getRoles()
 	{
 		return employee.getRoles();
 	}
 
+	@Override
+	public int getEmployeeId()
+	{
+		return employee.getEmpolyeeId();
+	}
 }
 
 

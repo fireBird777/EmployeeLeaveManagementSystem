@@ -8,25 +8,22 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.employee_leave_mgmt.entity.Leave;
 import com.employee_leave_mgmt.entity.LeaveType;
 
-
-
 @Repository
-public class LeaveDaoImpl implements LeaveDao {
+public class LeaveTypeDaoImpl implements LeaveTypeDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-
+	
 	
 	@Override
-	public void saveLeave(Leave theLeave)
-	{
+	public List<LeaveType> getLeaveTypes() {
 		Session currentSession = sessionFactory.getCurrentSession();
-		currentSession.save(theLeave);
+		Query<LeaveType> query = currentSession.createQuery("from LeaveType");
+		List<LeaveType> leaveTypes = query.getResultList();
+		
+		return leaveTypes ;
 	}
-	
-	
 
 }
