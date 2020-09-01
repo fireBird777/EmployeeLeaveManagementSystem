@@ -8,7 +8,7 @@ import com.employee_leave_mgmt.dao.RemainingLeaveDaysDao;
 import com.employee_leave_mgmt.entity.RemainingLeaveDays;
 
 @Service
-public class RemainingLeaveDaysServiceImpl implements RemainingLeaveDaysService {
+public class RemainingLeaveDaysServiceImpl implements RemainingLeaveDaysService{
 	@Autowired
 	private RemainingLeaveDaysDao remainingLeaveDaysDao;
 	

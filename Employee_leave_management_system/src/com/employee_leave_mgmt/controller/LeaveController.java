@@ -54,4 +54,10 @@ public class LeaveController {
 		
 		
 	}
+	
+	@GetMapping("/updatePage")
+	public String updateLeave(Model theModel)
+	{
+		return"update-leave-page";
+	}
 }

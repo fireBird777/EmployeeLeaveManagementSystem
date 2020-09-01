@@ -43,7 +43,7 @@ public class Leave {
 	@Column(name = "application_time_stamp")
 	private String applicationTimestamp;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, 
 			CascadeType.REFRESH })
 	@JoinColumn(name = "leave_type_id")
 	private LeaveType leaveType;

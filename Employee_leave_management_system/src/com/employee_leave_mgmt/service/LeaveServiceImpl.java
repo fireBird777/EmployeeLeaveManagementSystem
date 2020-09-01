@@ -29,28 +29,30 @@ public class LeaveServiceImpl implements LeaveService {
 	//purpose: cannot apply another leave in between applied leave duration
 	@Transactional
 	@Override
-	public void saveLeave(Leave theLeave)
+	public void  saveLeave(Leave theLeave) 
 	{
-		long leaveDays = remainingLeaveDaysOperations.calculateLeaveDays(theLeave.getStartDate(), theLeave.getEndDate());
-		long remainingLeaveDays = remainingLeaveDaysService.getRemainingLeaveDays(theLeave.getLeaveType().getLeaveTypeId());
 		
-		if(leaveDays<= remainingLeaveDays)
-		{
-			long currentRemainingLeaveDays = remainingLeaveDays-leaveDays;
-			RemainingLeaveDays remainingLeaveDaysEntity = new RemainingLeaveDays() ;
-			remainingLeaveDaysEntity.setDate( theLeave.getStartDate());
-			remainingLeaveDaysEntity.setLeaveType( theLeave.getLeaveType());
-			remainingLeaveDaysEntity.setRemainingDays((int)currentRemainingLeaveDays);
-			remainingLeaveDaysService.setRemainingLeaveDays(remainingLeaveDaysEntity);
+			long leaveDays = remainingLeaveDaysOperations.calculateLeaveDays(theLeave.getStartDate(), theLeave.getEndDate());
+			long remainingLeaveDays = remainingLeaveDaysService.getRemainingLeaveDays(theLeave.getLeaveType().getLeaveTypeId());
 			
-			
-			remainingLeaveDaysService.setRemainingLeaveDays(remainingLeaveDaysEntity);
-			
-			//check if leave is saved,DO NOT USE NESTED IF
-			//purpose: proper logic
-			leaveDao.saveLeave(theLeave);
-		}
+			if(leaveDays<= remainingLeaveDays)
+			{
+				long currentRemainingLeaveDays = remainingLeaveDays-leaveDays;
+				RemainingLeaveDays remainingLeaveDaysEntity = new RemainingLeaveDays() ;
+				remainingLeaveDaysEntity.setDate( theLeave.getStartDate());
+				remainingLeaveDaysEntity.setLeaveType( theLeave.getLeaveType());
+				remainingLeaveDaysEntity.setRemainingDays((int)currentRemainingLeaveDays);
+				remainingLeaveDaysService.setRemainingLeaveDays(remainingLeaveDaysEntity);
+				
+				
+				remainingLeaveDaysService.setRemainingLeaveDays(remainingLeaveDaysEntity);
+				
+				//check if leave is saved,DO NOT USE NESTED IF
+				//purpose: proper logic
+				leaveDao.saveLeave(theLeave);
+		
 		
 	}
 
+	}
 }

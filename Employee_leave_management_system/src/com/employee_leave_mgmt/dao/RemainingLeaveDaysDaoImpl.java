@@ -1,5 +1,7 @@
 package com.employee_leave_mgmt.dao;
 
+import java.sql.SQLException;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -27,9 +29,11 @@ public class RemainingLeaveDaysDaoImpl implements RemainingLeaveDaysDao {
 	@Override
 	public void saveRmainingLeaveDays(RemainingLeaveDays remainingLeaveDays )
 	{
-		boolean result;
-		Session currentSession = sessionFactory.getCurrentSession();
-		currentSession.save(remainingLeaveDays);
+		
+			Session currentSession = sessionFactory.getCurrentSession();
+			currentSession.save(remainingLeaveDays);
+		
+		
 		
 	}
 
