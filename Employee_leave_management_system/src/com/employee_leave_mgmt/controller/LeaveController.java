@@ -15,6 +15,7 @@ import com.employee_leave_mgmt.service.EmployeeService;
 import com.employee_leave_mgmt.service.LeaveService;
 import com.employee_leave_mgmt.service.LeaveTypeService;
 import com.employee_leave_mgmt.service.RemainingLeaveDaysService;
+import com.sun.xml.bind.v2.TODO;
 
 @RequestMapping("/employee")
 @Controller
@@ -45,6 +46,7 @@ public class LeaveController {
 		return "apply-leave-page";
 	}
 	
+	
 	@PostMapping("/saveLeaveInfo")
 	public String saveLeaveInfo(@ModelAttribute("leave")Leave theLeave)
 	{
@@ -55,9 +57,33 @@ public class LeaveController {
 		
 	}
 	
+	
+	
+	@GetMapping("/leaveInfo")
+	public String getCurrentLeaveRecord(Model theModel) {
+		
+		int employeeId = employeeService.getEmployeeId();
+		System.out.println(employeeId);
+		Leave leaveInfo = leaveService.getLatestLeaveInfo(employeeId);
+		System.out.println(leaveInfo);
+		theModel.addAttribute("leaveInfo",leaveInfo);
+		return "leave-info-page";
+	}
+	
+	
+	
+	
 	@GetMapping("/updatePage")
-	public String updateLeave(Model theModel)
+	public String updateCurrentLeave(Model theModel)
 	{
 		return"update-leave-page";
 	}
+	
+	
+	
+	public String deleteLeaveRecord() {
+		//TODO delete leave from db and return result
+		return"";
+	}
+	
 }

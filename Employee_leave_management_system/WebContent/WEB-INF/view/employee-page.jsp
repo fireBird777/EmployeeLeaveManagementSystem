@@ -11,8 +11,13 @@
 <body>
 	<a href="${pageContext.request.contextPath}/employee/applyPage">Appply
 		for Leave</a>
-	<c:url var="updateLink" value="${pageContext.request.contextPath}/employee/updatePage"></c:url>	
-	<a href="${updateLink}">update leave</a>
+		<br><br>
+		
+	<a href="${pageContext.request.contextPath}/employee/leaveInfo">View Leave Information</a>
+		
+		<!--<c:url var="updateLink" value="/employee/updatePage"></c:url>	
+	<a href="${updateLink}">update leave</a>   -->
+	
 	
 </body>
 </html>

@@ -8,4 +8,5 @@ import com.employee_leave_mgmt.entity.LeaveType;
 public interface LeaveService {
 
 		public void saveLeave( Leave theLeave);
+		public Leave getLatestLeaveInfo(int employeeId);
 }

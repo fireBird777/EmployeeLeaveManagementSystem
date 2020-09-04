@@ -26,6 +26,16 @@ public class LeaveDaoImpl implements LeaveDao {
 		Session currentSession = sessionFactory.getCurrentSession();
 		currentSession.save(theLeave);
 	}
+
+
+	@Override
+	public Leave getLatestLeaveInfo(int employeeId) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		Query<Leave> query = currentSession.createQuery("from Leave where employee.empolyeeId = :empId and startDate = (select max(startDate) from Leave)");
+		query.setParameter("empId", employeeId);
+		Leave leaveInfo = query.getSingleResult();
+		return leaveInfo;
+	}
 	
 	
 

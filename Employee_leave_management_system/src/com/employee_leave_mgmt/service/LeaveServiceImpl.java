@@ -44,6 +44,7 @@ public class LeaveServiceImpl implements LeaveService {
 				remainingLeaveDaysEntity.setRemainingDays((int)currentRemainingLeaveDays);
 				remainingLeaveDaysService.setRemainingLeaveDays(remainingLeaveDaysEntity);
 				
+				//called twice?
 				
 				remainingLeaveDaysService.setRemainingLeaveDays(remainingLeaveDaysEntity);
 				
@@ -54,5 +55,13 @@ public class LeaveServiceImpl implements LeaveService {
 		
 	}
 
+	}
+
+
+	@Transactional
+	@Override
+	public Leave getLatestLeaveInfo(int employeeId) {
+		Leave leaveInfo = leaveDao.getLatestLeaveInfo(employeeId);
+		return leaveInfo;
 	}
 }

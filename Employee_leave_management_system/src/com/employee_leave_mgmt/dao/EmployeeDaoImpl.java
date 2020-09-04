@@ -32,6 +32,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		Iterator iterator = Employees.iterator();
 		if (iterator.hasNext()) {
 			Employee theEmployee = Employees.get(0);
+			
+			//why get roles?
 			System.out.println(theEmployee.getRoles());
 			
 			//change this :
