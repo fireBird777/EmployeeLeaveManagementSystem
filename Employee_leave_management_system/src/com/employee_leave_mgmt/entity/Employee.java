@@ -59,6 +59,9 @@ public class Employee {
 	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL)
 	private List<Leave> leaves;
 	
+	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL)
+	private List<RemainingLeaveDays> remainingLeaveDays;
+	
 	public int getEmpolyeeId() {
 		return empolyeeId;
 	}

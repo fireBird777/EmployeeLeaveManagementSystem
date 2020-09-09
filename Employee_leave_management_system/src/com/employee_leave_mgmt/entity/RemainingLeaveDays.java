@@ -26,6 +26,10 @@ public class RemainingLeaveDays {
 	@Column(name = "date")
 	private String date;
 	
+	@ManyToOne(fetch = FetchType.LAZY ,cascade = {CascadeType.REFRESH,CascadeType.DETACH,CascadeType.MERGE})
+	@JoinColumn(name = "emp_id")
+	private Employee employee;
+	
 	@ManyToOne(fetch = FetchType.LAZY ,cascade = {CascadeType.DETACH,CascadeType.REFRESH})
 	@JoinColumn(name = "leave_type_id")
 	private LeaveType leaveType;
@@ -57,6 +61,15 @@ public class RemainingLeaveDays {
 	public void setLeaveType(LeaveType leaveType) {
 		this.leaveType = leaveType;
 	}
+	
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
 	@Override
 	public String toString() {
 		return "RemainingLeaveDays [remainingLeaveDaysId=" + remainingLeaveDaysId + ", remainingDays=" + remainingDays

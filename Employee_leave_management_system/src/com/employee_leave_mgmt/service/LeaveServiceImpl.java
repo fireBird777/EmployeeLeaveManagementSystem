@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.employee_leave_mgmt.dao.LeaveDao;
+import com.employee_leave_mgmt.entity.Employee;
 import com.employee_leave_mgmt.entity.Leave;
 import com.employee_leave_mgmt.entity.RemainingLeaveDays;
 import com.employee_leave_mgmt.operations.RemainingLeaveDaysOperations;
@@ -35,6 +36,8 @@ public class LeaveServiceImpl implements LeaveService {
 			long leaveDays = remainingLeaveDaysOperations.calculateLeaveDays(theLeave.getStartDate(), theLeave.getEndDate());
 			long remainingLeaveDays = remainingLeaveDaysService.getRemainingLeaveDays(theLeave.getLeaveType().getLeaveTypeId());
 			
+				
+		
 			if(leaveDays<= remainingLeaveDays)
 			{
 				long currentRemainingLeaveDays = remainingLeaveDays-leaveDays;
@@ -42,11 +45,12 @@ public class LeaveServiceImpl implements LeaveService {
 				remainingLeaveDaysEntity.setDate( theLeave.getStartDate());
 				remainingLeaveDaysEntity.setLeaveType( theLeave.getLeaveType());
 				remainingLeaveDaysEntity.setRemainingDays((int)currentRemainingLeaveDays);
+				
+				Employee emp = new Employee();
+				emp.setEmpolyeeId(theLeave.getEmployee().getEmpolyeeId());
+				remainingLeaveDaysEntity.setEmployee(emp);
 				remainingLeaveDaysService.setRemainingLeaveDays(remainingLeaveDaysEntity);
 				
-				//called twice?
-				
-				remainingLeaveDaysService.setRemainingLeaveDays(remainingLeaveDaysEntity);
 				
 				//check if leave is saved,DO NOT USE NESTED IF
 				//purpose: proper logic
@@ -54,6 +58,7 @@ public class LeaveServiceImpl implements LeaveService {
 		
 		
 	}
+			
 
 	}
 

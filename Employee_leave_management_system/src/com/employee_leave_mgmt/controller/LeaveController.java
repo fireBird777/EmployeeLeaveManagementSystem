@@ -63,11 +63,10 @@ public class LeaveController {
 	public String getCurrentLeaveRecord(Model theModel) {
 		
 		int employeeId = employeeService.getEmployeeId();
-		System.out.println(employeeId);
 		Leave leaveInfo = leaveService.getLatestLeaveInfo(employeeId);
-		System.out.println(leaveInfo);
 		theModel.addAttribute("leaveInfo",leaveInfo);
 		return "leave-info-page";
+		//TODO add leave type info : remaining eave days and applied leave type name
 	}
 	
 	
@@ -76,7 +75,12 @@ public class LeaveController {
 	@GetMapping("/updatePage")
 	public String updateCurrentLeave(Model theModel)
 	{
-		return"update-leave-page";
+		int employeeId = employeeService.getEmployeeId();
+		Leave leaveInfo = leaveService.getLatestLeaveInfo(employeeId);
+		theModel.addAttribute("Leave",leaveInfo);
+		return"apply-leave-page";
+		//TODO diplay the applied leave Type name as first option in leaveType list and display
+		//the application timestamp of applied leave
 	}
 	
 	

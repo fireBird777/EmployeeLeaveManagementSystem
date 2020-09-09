@@ -29,7 +29,10 @@
 		<td>${leaveInfo.applicationTimestamp}</td>
 	</tr>
 	
-	
+	<tr>
+		<th>Update information:</th>
+		<td><a href="${pageContext.request.contextPath}/employee/updatePage">Update</a></td>
+	</tr>
 
 </table>
 </body>

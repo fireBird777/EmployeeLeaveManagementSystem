@@ -15,7 +15,8 @@ public class RemainingLeaveDaysServiceImpl implements RemainingLeaveDaysService{
 	@Transactional
 	@Override
 	public long getRemainingLeaveDays(int LeaveTypeId) {
-		return remainingLeaveDaysDao.getRemainingLeaveDays(LeaveTypeId);
+		
+			return remainingLeaveDaysDao.getRemainingLeaveDays(LeaveTypeId);
 	}
 	
 	//check is remaining leave days are saved or not
